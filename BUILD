@@ -1,9 +1,11 @@
 # Load our Spring Boot Rule
 load(
     "//tools/springboot:springboot.bzl",
-    "add_boot_actuator_starter",
+    "add_boot_starter_actuator",
     "add_boot_jetty_starter",
-    "add_boot_web_starter",
+    "add_boot_starter_tomcat",
+    "add_boot_starter_web",
+    "add_jackson",
     "springboot",
 )
 
@@ -24,15 +26,26 @@ load(
 # both here in app_deps and in the WORKSPACE file.
 
 DEPS = [
-    "@commons_logging_commons_logging//jar",
+    "@com_fasterxml_classmate//jar",
+    "@org_hibernate_validator_hibernate_validator//jar",
+    "@javax_annotation_javax_annotation_api//jar",
+    "@org_jboss_logging_jboss_logging//jar",
+    "@org_slf4j_jul_to_slf4j//jar",
+    "@org_apache_logging_log4j_log4j_to_slf4j//jar",
+    "@org_apache_logging_log4j_log4j_api//jar",
+    "@ch_qos_logback_logback_core//jar",
+    "@ch_qos_logback_logback_classic//jar",
+    "@org_slf4j_slf4j_api//jar",
+    "@org_yaml_snakeyaml//jar",
 ]
 
 # Convenience Methods for Adding Entire Starters
-add_boot_jetty_starter(DEPS)
+# add_boot_jetty_starter(DEPS)
+# add_boot_starter_actuator(DEPS)
 
-add_boot_web_starter(DEPS)
-
-add_boot_actuator_starter(DEPS)
+add_boot_starter_web(DEPS)
+add_boot_starter_tomcat(DEPS)
+add_jackson(DEPS)
 
 # Build the app
 springboot(

@@ -172,7 +172,6 @@ def springboot(name, boot_app_class, deps, resources=[]):
 
 def add_boot_jetty_starter(deps):
   _safe_add(deps, "@org_springframework_boot_spring_boot_starter_jetty//jar")
-  _safe_add(deps, "@org_springframework_boot_spring_boot_starter_jetty//jar")
   _safe_add(deps, "@org_eclipse_jetty_jetty_server//jar")
   _safe_add(deps, "@org_eclipse_jetty_jetty_servlet//jar")
   _safe_add(deps, "@org_eclipse_jetty_jetty_util//jar")
@@ -181,37 +180,49 @@ def add_boot_jetty_starter(deps):
   _safe_add(deps, "@org_eclipse_jetty_jetty_http//jar")
   _safe_add(deps, "@org_eclipse_jetty_jetty_io//jar")
 
-def add_boot_web_starter(deps):
+def add_boot_starter_web(deps):
   _safe_add(deps, "@org_springframework_boot_spring_boot_starter_web//jar")
 
-def add_boot_actuator_starter(deps):
+def add_boot_starter_tomcat(deps):
+  _safe_add(deps, "@org_apache_tomcat_embed_tomcat_embed_core//jar")
+  _safe_add(deps, "@org_apache_tomcat_embed_tomcat_embed_el//jar")
+  _safe_add(deps, "@org_apache_tomcat_embed_tomcat_embed_websocket//jar")
+  _safe_add(deps, "@org_springframework_boot_spring_boot_starter_tomcat//jar")
+
+def add_boot_starter_actuator(deps):
     _safe_add(deps, "@org_springframework_boot_spring_boot_starter_actuator//jar")
     _safe_add(deps, "@org_springframework_boot_spring_boot_actuator//jar")
-    _safe_add(deps, "@com_fasterxml_jackson_core_jackson_databind//jar")
-    _safe_add(deps, "@com_fasterxml_jackson_core_jackson_core//jar")
-    _safe_add(deps, "@com_fasterxml_jackson_core_jackson_annotations//jar")
 
+def add_jackson(deps):
+  _safe_add(deps, "@com_fasterxml_jackson_core_jackson_annotations//jar")
+  _safe_add(deps, "@com_fasterxml_jackson_core_jackson_core//jar")
+  _safe_add(deps, "@com_fasterxml_jackson_core_jackson_databind//jar")
+  _safe_add(deps, "@com_fasterxml_jackson_datatype_jackson_datatype_jsr310//jar")
+  _safe_add(deps, "@com_fasterxml_jackson_datatype_jackson_datatype_jdk8//jar")
+  _safe_add(deps, "@com_fasterxml_jackson_module_jackson_module_parameter_names//jar")
 
 # Default Dependencies
 
 # Add in the standard Spring Boot dependencies so that app devs don't
 # need to explicitly state them every time in the BUILD file.
 def _add_default_deps(deps):
-  _safe_add(deps, "@javax_servlet_javax_servlet_api//jar")
-
-  _safe_add(deps, "@org_springframework_spring_beans//jar")
-  _safe_add(deps, "@org_springframework_spring_context//jar")
-  _safe_add(deps, "@org_springframework_spring_web//jar")
-  _safe_add(deps, "@org_springframework_spring_core//jar")
+  _safe_add(deps, "@javax_validation_validation_api//jar")
   _safe_add(deps, "@org_springframework_spring_aop//jar")
+  _safe_add(deps, "@org_springframework_spring_beans//jar")
+  _safe_add(deps, "@org_springframework_spring_core//jar")
+  _safe_add(deps, "@org_springframework_spring_context//jar")
   _safe_add(deps, "@org_springframework_spring_expression//jar")
-
+  _safe_add(deps, "@org_springframework_spring_jcl//jar")
+  _safe_add(deps, "@org_springframework_spring_web//jar")
+  _safe_add(deps, "@org_springframework_spring_webmvc//jar")
   _safe_add(deps, "@org_springframework_boot_spring_boot//jar")
   _safe_add(deps, "@org_springframework_boot_spring_boot_autoconfigure//jar")
   _safe_add(deps, "@org_springframework_boot_spring_boot_loader//jar")
   _safe_add(deps, "@org_springframework_boot_spring_boot_starter//jar")
   _safe_add(deps, "@org_springframework_boot_spring_boot_starter_logging//jar")
-
+  _safe_add(deps, "@org_springframework_boot_spring_boot_starter_json//jar")
+  _safe_add(deps, "@org_springframework_boot_spring_boot_starter_tomcat//jar")
+  _safe_add(deps, "@org_springframework_boot_spring_boot_starter_web//jar")
 
 # Bazel will fail if a dependency appears twice for the same target, so be safe when
 # adding a dependencies to the deps list

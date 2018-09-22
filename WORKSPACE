@@ -5,6 +5,9 @@
 # For full license text, see LICENSE.txt file in the repo root  or https://opensource.org/licenses/BSD-3-Clause
 #
 
+load("//:generate_workspace.bzl", "generated_maven_jars")
+generated_maven_jars()
+
 # Nexus/Artifactory
 maven_server(
    name = "default",
@@ -20,31 +23,6 @@ maven_server(
 maven_jar(
   name = "aopalliance_aopalliance",
   artifact = "aopalliance:aopalliance:1.0",
-)
-
-maven_jar(
-  name = "ch_qos_logback_logback_classic",
-  artifact = "ch.qos.logback:logback-classic:1.1.11",
-)
-
-maven_jar(
-  name = "ch_qos_logback_logback_core",
-  artifact = "ch.qos.logback:logback-core:1.1.11",
-)
-
-maven_jar(
-  name = "com_fasterxml_jackson_core_jackson_annotations",
-  artifact = "com.fasterxml.jackson.core:jackson-annotations:2.8.0",
-)
-
-maven_jar(
-  name = "com_fasterxml_jackson_core_jackson_core",
-  artifact = "com.fasterxml.jackson.core:jackson-core:2.8.9",
-)
-
-maven_jar(
-  name = "com_fasterxml_jackson_core_jackson_databind",
-  artifact = "com.fasterxml.jackson.core:jackson-databind:2.8.9",
 )
 
 maven_jar(
@@ -70,11 +48,6 @@ maven_jar(
 maven_jar(
   name = "com_fasterxml_jackson_module_jackson_module_scala_2_11",
   artifact = "com.fasterxml.jackson.module:jackson-module-scala_2.11:2.8.9",
-)
-
-maven_jar(
-  name = "com_fasterxml_classmate",
-  artifact = "com.fasterxml:classmate:1.3.3",
 )
 
 maven_jar(
@@ -228,11 +201,6 @@ maven_jar(
 )
 
 maven_jar(
-  name = "javax_annotation_javax_annotation_api",
-  artifact = "javax.annotation:javax.annotation-api:1.2",
-)
-
-maven_jar(
   name = "javax_inject_javax_inject",
   artifact = "javax.inject:javax.inject:1",
 )
@@ -240,11 +208,6 @@ maven_jar(
 maven_jar(
   name = "javax_servlet_javax_servlet_api",
   artifact = "javax.servlet:javax.servlet-api:3.1.0",
-)
-
-maven_jar(
-  name = "javax_validation_validation_api",
-  artifact = "javax.validation:validation-api:1.1.0.Final",
 )
 
 maven_jar(
@@ -265,11 +228,6 @@ maven_jar(
 maven_jar(
   name = "log4j_log4j",
   artifact = "log4j:log4j:1.2.16",
-)
-
-maven_jar(
-  name = "net_bytebuddy_byte_buddy",
-  artifact = "net.bytebuddy:byte-buddy:1.7.1",
 )
 
 maven_jar(
@@ -300,21 +258,6 @@ maven_jar(
 maven_jar(
   name = "org_apache_thrift_libthrift",
   artifact = "org.apache.thrift:libthrift:0.9.2",
-)
-
-maven_jar(
-  name = "org_apache_tomcat_embed_tomcat_embed_core",
-  artifact = "org.apache.tomcat.embed:tomcat-embed-core:8.5.15",
-)
-
-maven_jar(
-  name = "org_apache_tomcat_embed_tomcat_embed_el",
-  artifact = "org.apache.tomcat.embed:tomcat-embed-el:8.5.15",
-)
-
-maven_jar(
-  name = "org_apache_tomcat_embed_tomcat_embed_websocket",
-  artifact = "org.apache.tomcat.embed:tomcat-embed-websocket:8.5.15",
 )
 
 maven_jar(
@@ -613,11 +556,6 @@ maven_jar(
 )
 
 maven_jar(
-  name = "org_jboss_logging_jboss_logging",
-  artifact = "org.jboss.logging:jboss-logging:3.3.1.Final",
-)
-
-maven_jar(
   name = "org_jvnet_tiger_types",
   artifact = "org.jvnet:tiger-types:1.4",
 )
@@ -630,16 +568,6 @@ maven_jar(
 maven_jar(
   name = "org_mpierce_metrics_reservoir_hdrhistogram_metrics_reservoir",
   artifact = "org.mpierce.metrics.reservoir:hdrhistogram-metrics-reservoir:1.1.0",
-)
-
-maven_jar(
-  name = "org_objenesis_objenesis",
-  artifact = "org.objenesis:objenesis:2.1",
-)
-
-maven_jar(
-  name = "org_ow2_asm_asm",
-  artifact = "org.ow2.asm:asm:5.1",
 )
 
 maven_jar(
@@ -668,83 +596,43 @@ maven_jar(
 )
 
 maven_jar(
-  name = "org_slf4j_jul_to_slf4j",
-  artifact = "org.slf4j:jul-to-slf4j:1.7.25",
-)
-
-maven_jar(
   name = "org_slf4j_log4j_over_slf4j",
   artifact = "org.slf4j:log4j-over-slf4j:1.7.25",
 )
 
 maven_jar(
-  name = "org_slf4j_slf4j_api",
-  artifact = "org.slf4j:slf4j-api:1.7.25",
-)
-
-maven_jar(
-  name = "org_springframework_boot_spring_boot",
-  artifact = "org.springframework.boot:spring-boot:1.5.6.RELEASE",
-)
-
-maven_jar(
   name = "org_springframework_boot_spring_boot_actuator",
-  artifact = "org.springframework.boot:spring-boot-actuator:1.5.6.RELEASE",
-)
-
-maven_jar(
-  name = "org_springframework_boot_spring_boot_autoconfigure",
-  artifact = "org.springframework.boot:spring-boot-autoconfigure:1.5.6.RELEASE",
+  artifact = "org.springframework.boot:spring-boot-actuator:2.0.5.RELEASE",
 )
 
 maven_jar(
   name = "org_springframework_boot_spring_boot_configuration_processor",
-  artifact = "org.springframework.boot:spring-boot-configuration-processor:1.5.4.RELEASE",
+  artifact = "org.springframework.boot:spring-boot-configuration-processor:2.0.5.RELEASE",
 )
 
 maven_jar(
   name = "org_springframework_boot_spring_boot_loader",
-  artifact = "org.springframework.boot:spring-boot-loader:1.5.6.RELEASE",
-)
-
-maven_jar(
-  name = "org_springframework_boot_spring_boot_starter",
-  artifact = "org.springframework.boot:spring-boot-starter:1.5.6.RELEASE",
+  artifact = "org.springframework.boot:spring-boot-loader:2.0.5.RELEASE",
 )
 
 maven_jar(
   name = "org_springframework_boot_spring_boot_starter_actuator",
-  artifact = "org.springframework.boot:spring-boot-starter-actuator:1.5.6.RELEASE",
+  artifact = "org.springframework.boot:spring-boot-starter-actuator:2.0.5.RELEASE",
 )
 
 maven_jar(
   name = "org_springframework_boot_spring_boot_starter_jdbc",
-  artifact = "org.springframework.boot:spring-boot-starter-jdbc:1.5.6.RELEASE",
+  artifact = "org.springframework.boot:spring-boot-starter-jdbc:2.0.5.RELEASE",
 )
 
 maven_jar(
   name = "org_springframework_boot_spring_boot_starter_jetty",
-  artifact = "org.springframework.boot:spring-boot-starter-jetty:1.5.6.RELEASE",
-)
-
-maven_jar(
-  name = "org_springframework_boot_spring_boot_starter_logging",
-  artifact = "org.springframework.boot:spring-boot-starter-logging:1.5.6.RELEASE",
+  artifact = "org.springframework.boot:spring-boot-starter-jetty:2.0.5.RELEASE",
 )
 
 maven_jar(
   name = "org_springframework_boot_spring_boot_starter_security",
-  artifact = "org.springframework.boot:spring-boot-starter-security:1.5.6.RELEASE",
-)
-
-maven_jar(
-  name = "org_springframework_boot_spring_boot_starter_tomcat",
-  artifact = "org.springframework.boot:spring-boot-starter-tomcat:1.5.4.RELEASE",
-)
-
-maven_jar(
-  name = "org_springframework_boot_spring_boot_starter_web",
-  artifact = "org.springframework.boot:spring-boot-starter-web:1.5.6.RELEASE",
+  artifact = "org.springframework.boot:spring-boot-starter-security:2.0.5.RELEASE",
 )
 
 maven_jar(
@@ -763,33 +651,8 @@ maven_jar(
 )
 
 maven_jar(
-  name = "org_springframework_spring_aop",
-  artifact = "org.springframework:spring-aop:4.3.10.RELEASE",
-)
-
-maven_jar(
   name = "org_springframework_spring_aspects",
   artifact = "org.springframework:spring-aspects:4.3.10.RELEASE",
-)
-
-maven_jar(
-  name = "org_springframework_spring_beans",
-  artifact = "org.springframework:spring-beans:4.3.10.RELEASE",
-)
-
-maven_jar(
-  name = "org_springframework_spring_context",
-  artifact = "org.springframework:spring-context:4.3.10.RELEASE",
-)
-
-maven_jar(
-  name = "org_springframework_spring_core",
-  artifact = "org.springframework:spring-core:4.3.10.RELEASE",
-)
-
-maven_jar(
-  name = "org_springframework_spring_expression",
-  artifact = "org.springframework:spring-expression:4.3.10.RELEASE",
 )
 
 maven_jar(
@@ -802,17 +665,3 @@ maven_jar(
   artifact = "org.springframework:spring-tx:4.3.10.RELEASE",
 )
 
-maven_jar(
-  name = "org_springframework_spring_web",
-  artifact = "org.springframework:spring-web:4.3.10.RELEASE",
-)
-
-maven_jar(
-  name = "org_springframework_spring_webmvc",
-  artifact = "org.springframework:spring-webmvc:4.3.10.RELEASE",
-)
-
-maven_jar(
-  name = "org_yaml_snakeyaml",
-  artifact = "org.yaml:snakeyaml:1.17",
-)
