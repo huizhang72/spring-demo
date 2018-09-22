@@ -58,6 +58,66 @@ includes java files in src folder. Just be careful.
 
 ## Tips
 
+### Generate dependency site
 mvn site
 
+### Some mvn questions
 https://stackoverflow.com/questions/2877436/how-can-i-ask-maven-for-a-list-of-the-default-repositories
+
+## Performance
+
+Very interesting to see performance between bazel and mvn.
+
+```shell
+mvn install # install
+```
+
+```shell
+mvn package # build package
+```
+
+```shell
+mvn compile # just compile
+```
+
+After 'mvn clean' and 'bazel clean', now we do
+
+```shell
+time mvn compile
+```
+
+real    0m3.208s
+user    0m17.931s
+sys    0m0.779s
+
+```shell
+time bazel build //:demo
+```
+
+real    0m6.817s
+user    0m0.017s
+sys    0m0.010s
+
+Then made a trial change in a java file
+
+```shell
+time mvn compile
+```
+
+real    0m3.095s
+user    0m18.078s
+sys    0m0.700s
+
+
+```shell
+time bazel build //:demo
+```
+
+real    0m1.318s
+user    0m0.019s
+sys    0m0.005s
+
+Incremental build, bazel is faster. For full build I can see two issues,
+1. clear external dependencies, compare the peformance.
+2. sprintboot.bzl always rebuilds the jar, which takes longer time than 'mvn compile'
+
